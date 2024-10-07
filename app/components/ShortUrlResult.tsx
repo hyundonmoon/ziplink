@@ -9,10 +9,10 @@ export default function ShortUrlResult({
 	shortCode,
 	handleReset,
 }: ShortUrlResultProps) {
+	const shortUrl = `${window.location.host}/${shortCode}`;
+
 	const handleCopy = () => {
-		navigator.clipboard.writeText(
-			`${process.env.NEXT_PUBLIC_HOST}/${shortCode}`
-		);
+		navigator.clipboard.writeText(shortUrl);
 	};
 
 	return (
@@ -33,7 +33,7 @@ export default function ShortUrlResult({
 					<input
 						type="text"
 						readOnly
-						value={`${process.env.NEXT_PUBLIC_HOST}/${shortCode}`}
+						value={shortUrl}
 						className="w-full p-2 rounded-md border outline-none"
 					></input>
 				</label>
@@ -41,7 +41,7 @@ export default function ShortUrlResult({
 				<div className="space-x-2">
 					<button className="border py-1 px-3 rounded-md">
 						<a
-							href={`${process.env.NEXT_PUBLIC_HOST}/${shortCode}`}
+							href={shortUrl}
 							target="_blank"
 							rel="noreferrer noopener"
 						>
