@@ -39,9 +39,10 @@ export default function ShortUrlResult({
 				</label>
 
 				<div className="space-x-2">
-					<button className="border py-1 px-3 rounded-md">
+					<button>
 						<a
-							href={shortUrl}
+							className="inline-block border py-1 px-3 rounded-md"
+							href={`/${shortCode}`}
 							target="_blank"
 							rel="noreferrer noopener"
 						>
