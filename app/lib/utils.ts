@@ -12,3 +12,11 @@ export const validateUrl = (url: string) => {
 		return { isValid: false, errorMessage: 'Invalid URL' };
 	}
 };
+
+export const normalizeUrl = (url: string) => {
+	try {
+		return new URL(url);
+	} catch (_) {
+		return new URL(`https://${url}`);
+	}
+};

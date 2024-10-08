@@ -10,7 +10,9 @@ import {
 import { ShortUrlResponse } from '@/app/lib/models';
 import prisma from '@/app/lib/prisma';
 import { customAlphabet } from 'nanoid';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { z } from 'zod';
+import { normalizeUrl } from './utils';
 
 // zod url validation sucks, so we'll use a regex instead for now
 // TODO: check back on zod's url validation in the future
@@ -35,7 +37,7 @@ export async function createShortUrl(
 	url: string
 ): Promise<ShortUrlResponse> {
 	const parseResult = urlSchema.safeParse({ url: url.trim() });
-	console.log({ parseResult });
+
 	if (!parseResult.success) {
 		return {
 			status: ACTION_FAILED,
@@ -44,9 +46,10 @@ export async function createShortUrl(
 	}
 
 	try {
+		const normalizedUrl = normalizeUrl(parseResult.data.url.trim());
 		const result = await prisma.shortUrl.create({
 			data: {
-				originalUrl: parseResult.data.url.trim(),
+				originalUrl: normalizedUrl.href,
 				shortCode: nanoid(6),
 			},
 		});
@@ -64,4 +67,18 @@ export async function createShortUrl(
 			reason: UNKNOWN_ERROR,
 		};
 	}
+}
+
+export async function queryShortUrl(_prevState: unknown, shortCode: string) {
+	const result = await prisma.shortUrl.findUnique({
+		where: {
+			shortCode,
+		},
+	});
+
+	if (!result) {
+		notFound();
+	}
+
+	permanentRedirect(result.originalUrl);
 }
