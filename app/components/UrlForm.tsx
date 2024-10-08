@@ -4,6 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import { ACTION_FAILED, INVALID_URL } from '../lib/constants';
 import { ShortUrlResponse } from '../lib/models';
 import { validateUrl } from '../lib/utils';
+import { ShortenButton } from './URLFormSubmitButton';
 
 interface UrlFormProps {
 	formActionState: ShortUrlResponse | null;
@@ -57,12 +58,8 @@ export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
 						</p>
 					)}
 				</label>
-				<button
-					type="submit"
-					className="w-full border p-2 rounded-md text-slate-100 bg-yellow-900 hover:bg-yellow-800"
-				>
-					Shorten
-				</button>
+
+				<ShortenButton />
 			</div>
 		</form>
 	);
