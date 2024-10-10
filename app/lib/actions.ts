@@ -9,6 +9,7 @@ import {
 } from '@/app/lib/constants';
 import { ShortUrlResponse } from '@/app/lib/models';
 import prisma from '@/app/lib/prisma';
+import { signIn as authSignIn, signOut as authSignOut } from '@/auth';
 import { customAlphabet } from 'nanoid';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { z } from 'zod';
@@ -81,4 +82,12 @@ export async function queryShortUrl(_prevState: unknown, shortCode: string) {
 	}
 
 	permanentRedirect(result.originalUrl);
+}
+
+export async function signIn() {
+	await authSignIn();
+}
+
+export async function signOut() {
+	await authSignOut();
 }
