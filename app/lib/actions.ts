@@ -9,7 +9,7 @@ import {
 } from '@/app/lib/constants';
 import { ShortUrlResponse } from '@/app/lib/models';
 import prisma from '@/app/lib/prisma';
-import { signIn as authSignIn, signOut as authSignOut } from '@/auth';
+import { auth, signIn as authSignIn, signOut as authSignOut } from '@/auth';
 import { customAlphabet } from 'nanoid';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { z } from 'zod';
@@ -37,6 +37,7 @@ export async function createShortUrl(
 	_prevState: unknown,
 	url: string
 ): Promise<ShortUrlResponse> {
+	const session = await auth();
 	const parseResult = urlSchema.safeParse({ url: url.trim() });
 
 	if (!parseResult.success) {
@@ -52,6 +53,11 @@ export async function createShortUrl(
 			data: {
 				originalUrl: normalizedUrl.href,
 				shortCode: nanoid(6),
+				User: {
+					connect: {
+						id: session?.userId,
+					},
+				},
 			},
 		});
 
