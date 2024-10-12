@@ -7,13 +7,13 @@ import {
 	NANO_ID_ALPHABET,
 	UNKNOWN_ERROR,
 } from '@/app/lib/constants';
-import { ShortUrlResponse } from '@/app/lib/models';
 import prisma from '@/app/lib/prisma';
 import { auth, signIn as authSignIn, signOut as authSignOut } from '@/auth';
 import { customAlphabet } from 'nanoid';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { z } from 'zod';
 import { normalizeUrl } from './utils';
+import { UrlShortenActionResult } from './models';
 
 // zod url validation sucks, so we'll use a regex instead for now
 // TODO: check back on zod's url validation in the future
@@ -36,7 +36,7 @@ const nanoid = customAlphabet(NANO_ID_ALPHABET, 10);
 export async function createShortUrl(
 	_prevState: unknown,
 	url: string
-): Promise<ShortUrlResponse> {
+): Promise<UrlShortenActionResult> {
 	const session = await auth();
 	const parseResult = urlSchema.safeParse({ url: url.trim() });
 
@@ -44,6 +44,7 @@ export async function createShortUrl(
 		return {
 			status: ACTION_FAILED,
 			reason: INVALID_URL,
+			message: 'Please enter a valid URL.',
 		};
 	}
 
@@ -72,6 +73,7 @@ export async function createShortUrl(
 		return {
 			status: ACTION_FAILED,
 			reason: UNKNOWN_ERROR,
+			message: 'An unknown error occurred.',
 		};
 	}
 }

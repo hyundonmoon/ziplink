@@ -1,34 +1,26 @@
 'use client';
 
+import { ShortenButton } from '@/app/components/URLFormSubmitButton';
+import { ACTION_FAILED, INVALID_URL } from '@/app/lib/constants';
+import { UrlShortenActionResult } from '@/app/lib/models';
 import { ChangeEvent, useState } from 'react';
-import { ACTION_FAILED, INVALID_URL } from '../lib/constants';
-import { ShortUrlResponse } from '../lib/models';
-import { validateUrl } from '../lib/utils';
-import { ShortenButton } from './URLFormSubmitButton';
 
 interface UrlFormProps {
-	formActionState: ShortUrlResponse | null;
+	formActionState: UrlShortenActionResult | null;
 	formAction: (url: string) => void;
 }
 
 export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
 	const [url, setUrl] = useState('');
-	const [isValid, setIsValid] = useState(true);
-
-	const handleBlur = () => {
-		const urlValidation = validateUrl(url);
-		setIsValid(urlValidation.isValid);
-	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setUrl(e.target.value);
 	};
 
 	const isUrlInvalid =
-		!isValid ||
-		(formActionState &&
-			formActionState.status === ACTION_FAILED &&
-			formActionState.reason === INVALID_URL);
+		formActionState &&
+		formActionState.status === ACTION_FAILED &&
+		formActionState.reason === INVALID_URL;
 
 	return (
 		<form
@@ -50,11 +42,10 @@ export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
                         ${isUrlInvalid ? 'border-rose-500' : null}`}
 						value={url}
 						onChange={handleChange}
-						onBlur={handleBlur}
 					/>
 					{isUrlInvalid && (
 						<p className="mt-1 text-sm text-rose-500">
-							Please enter a valid URL.
+							{formActionState.message}
 						</p>
 					)}
 				</label>
