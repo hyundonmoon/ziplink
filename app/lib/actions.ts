@@ -5,15 +5,17 @@ import {
 	ACTION_SUCCESS,
 	INVALID_URL,
 	NANO_ID_ALPHABET,
+	TOKEN_ERROR,
+	TOKEN_ERROR_MESSAGES,
 	UNKNOWN_ERROR,
 } from '@/app/lib/constants';
+import { UrlShortenActionResult } from '@/app/lib/models';
 import prisma from '@/app/lib/prisma';
+import { checkToken, normalizeUrl } from '@/app/lib/utils';
 import { auth, signIn as authSignIn, signOut as authSignOut } from '@/auth';
 import { customAlphabet } from 'nanoid';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { z } from 'zod';
-import { normalizeUrl } from './utils';
-import { UrlShortenActionResult } from './models';
 
 // zod url validation sucks, so we'll use a regex instead for now
 // TODO: check back on zod's url validation in the future
@@ -35,9 +37,10 @@ const nanoid = customAlphabet(NANO_ID_ALPHABET, 10);
 
 export async function createShortUrl(
 	_prevState: unknown,
-	url: string
+	formData: FormData
 ): Promise<UrlShortenActionResult> {
 	const session = await auth();
+	const url = (formData.get('url') as string) || '';
 	const parseResult = urlSchema.safeParse({ url: url.trim() });
 
 	if (!parseResult.success) {
@@ -45,6 +48,17 @@ export async function createShortUrl(
 			status: ACTION_FAILED,
 			reason: INVALID_URL,
 			message: 'Please enter a valid URL.',
+		};
+	}
+
+	const token = formData.get('cf-turnstile-response') as string;
+	const tokenResult = await checkToken(token);
+
+	if (tokenResult.status === ACTION_FAILED) {
+		return {
+			status: ACTION_FAILED,
+			reason: TOKEN_ERROR,
+			message: TOKEN_ERROR_MESSAGES[tokenResult.reason],
 		};
 	}
 
