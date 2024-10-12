@@ -113,3 +113,24 @@ export async function signIn() {
 export async function signOut() {
 	await authSignOut();
 }
+
+export async function getUserLinks() {
+	const session = await auth();
+
+	if (!session) {
+		throw new Error('User is not authenticated.');
+	}
+
+	const links = await prisma.shortUrl.findMany({
+		where: {
+			userId: session.userId,
+		},
+		select: {
+			originalUrl: true,
+			shortCode: true,
+			id: true,
+		},
+	});
+
+	return links;
+}

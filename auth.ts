@@ -13,8 +13,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	],
 	callbacks: {
 		async authorized({ request, auth }) {
-			console.log({ request });
-			console.log({ auth });
+			if (request.nextUrl.pathname.startsWith('/my-links')) {
+				return !!auth;
+			}
+
 			return true;
 		},
 	},
