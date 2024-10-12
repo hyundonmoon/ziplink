@@ -11,4 +11,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			clientSecret: process.env.AUTH_GITHUB_SECRET,
 		}),
 	],
+	callbacks: {
+		async authorized({ request, auth }) {
+			console.log({ request });
+			console.log({ auth });
+			return true;
+		},
+	},
 });
