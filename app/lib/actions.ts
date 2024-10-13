@@ -112,7 +112,7 @@ export async function signIn() {
 }
 
 export async function signOut() {
-	await authSignOut();
+	await authSignOut({ redirectTo: '/' });
 }
 
 export async function getUserLinks() {
