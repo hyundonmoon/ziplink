@@ -34,3 +34,9 @@ export interface TokenCheckFailure {
 }
 
 export type TokenCheckResult = TokenCheckSuccess | TokenCheckFailure;
+
+export interface ShortLink {
+	originalUrl: string;
+	shortCode: string;
+	id: number;
+}

@@ -62,3 +62,7 @@ export const checkToken = async (token: string): Promise<TokenCheckResult> => {
 		} as const;
 	}
 };
+
+export const handleCopy = (text: string) => {
+	navigator.clipboard.writeText(text);
+};

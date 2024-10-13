@@ -14,7 +14,8 @@ import prisma from '@/app/lib/prisma';
 import { checkToken, normalizeUrl } from '@/app/lib/utils';
 import { auth, signIn as authSignIn, signOut as authSignOut } from '@/auth';
 import { customAlphabet } from 'nanoid';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+import { notFound, permanentRedirect, redirect } from 'next/navigation';
 import { z } from 'zod';
 
 // zod url validation sucks, so we'll use a regex instead for now
@@ -133,4 +134,24 @@ export async function getUserLinks() {
 	});
 
 	return links;
+}
+
+export async function deleteUserLink(id: number) {
+	const session = await auth();
+
+	if (!session) {
+		// TODO: Handle sign in page redirection
+		redirect('/');
+	}
+
+	try {
+		await prisma.shortUrl.delete({
+			where: {
+				id,
+				userId: session.userId,
+			},
+		});
+	} catch (_) {}
+
+	revalidatePath('/my-links');
 }

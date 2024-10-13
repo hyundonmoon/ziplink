@@ -1,50 +1,17 @@
-'use client';
+import MyLinks from '@/app/my-links/_components/MyLinks';
+import Loading from '@/app/my-links/loading';
+import { Suspense } from 'react';
 
-import { getUserLinks as getUserLinksServerAction } from '@/app/lib/actions';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-interface Link {
-	originalUrl: string;
-	shortCode: string;
-	id: number;
-}
-
-export default function MyLinks() {
-	const [links, setLinks] = useState<Link[]>([]);
-	const router = useRouter();
-
-	useEffect(() => {
-		const getUserLinks = async () => {
-			try {
-				const links = await getUserLinksServerAction();
-				setLinks(links);
-			} catch {
-				// TODO: Handle sign in page redirection
-				router.push('/');
-			}
-		};
-
-		getUserLinks();
-	}, [router]);
-
+export default function MyLinksPage() {
 	return (
 		<div>
-			<ul>
-				{links.map(({ id, shortCode, originalUrl }) => (
-					<li key={id.toString()}>
-						<span>{shortCode}</span>
-						<span> - </span>
-						<a
-							href={originalUrl}
-							target="_blank"
-							rel="noreferrer noopener"
-						>
-							Visit
-						</a>
-					</li>
-				))}
-			</ul>
+			<h1 className="text-2xl font-bold mb-12 pb-4 border-b-4">
+				Your links
+			</h1>
+
+			<Suspense fallback={<Loading />}>
+				<MyLinks />
+			</Suspense>
 		</div>
 	);
 }

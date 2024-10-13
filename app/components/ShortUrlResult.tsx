@@ -1,3 +1,5 @@
+import { handleCopy } from '@/app/lib/utils';
+
 interface ShortUrlResultProps {
 	originalUrl: string;
 	shortCode: string;
@@ -10,10 +12,6 @@ export default function ShortUrlResult({
 	handleReset,
 }: ShortUrlResultProps) {
 	const shortUrl = `${window.location.host}/${shortCode}`;
-
-	const handleCopy = () => {
-		navigator.clipboard.writeText(shortUrl);
-	};
 
 	return (
 		<div className="p-4 bg-slate-50 rounded-md">
@@ -52,7 +50,7 @@ export default function ShortUrlResult({
 
 					<button
 						className="border py-1 px-3 rounded-md"
-						onClick={handleCopy}
+						onClick={() => handleCopy(shortUrl)}
 					>
 						Copy
 					</button>
