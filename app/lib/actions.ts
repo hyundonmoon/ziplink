@@ -119,7 +119,8 @@ export async function getUserLinks() {
 	const session = await auth();
 
 	if (!session) {
-		throw new Error('User is not authenticated.');
+		// TODO: Handle sign in page redirection
+		redirect('/');
 	}
 
 	const links = await prisma.shortUrl.findMany({
