@@ -11,13 +11,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			clientSecret: process.env.AUTH_GITHUB_SECRET,
 		}),
 	],
-	callbacks: {
-		async authorized({ request, auth }) {
-			if (request.nextUrl.pathname.startsWith('/my-links')) {
-				return !!auth;
-			}
-
-			return true;
-		},
-	},
 });
