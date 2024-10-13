@@ -1,6 +1,7 @@
+import Navigation from '@/app/components/Navigation';
 import SignInButton from '@/app/components/SignInButton';
 import { auth } from '@/auth';
-import SignOutButton from './SignOutButton';
+import Link from 'next/link';
 
 export default async function Header() {
 	const session = await auth();
@@ -8,8 +9,10 @@ export default async function Header() {
 
 	return (
 		<header className="flex justify-between items-center p-4">
-			<h1 className="text-2xl font-bold">URL Shortener</h1>
-			{loggedIn ? <SignOutButton /> : <SignInButton />}
+			<h1 className="text-2xl font-bold">
+				<Link href="/">URL Shortener</Link>
+			</h1>
+			{loggedIn ? <Navigation /> : <SignInButton />}
 		</header>
 	);
 }
