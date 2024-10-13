@@ -30,10 +30,13 @@ export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
 		formActionState.reason === TOKEN_ERROR;
 
 	return (
-		<form className="p-4 bg-slate-50 rounded-md" action={formAction}>
+		<form
+			className="p-4 border	rounded-lg overflow-hidden"
+			action={formAction}
+		>
 			<div className="flex flex-col space-y-4">
 				<label>
-					<span className="text-sm mb-1 block">URL to shorten</span>
+					<span className="mb-1 block">URL to shorten</span>
 					<input
 						type="text"
 						name="url"

@@ -8,9 +8,9 @@ export default async function Header() {
 	const loggedIn = !!session?.userId;
 
 	return (
-		<header className="flex justify-between items-center p-4">
+		<header className="flex justify-between items-center">
 			<h1 className="text-2xl font-bold">
-				<Link href="/">URL Shortener</Link>
+				<Link href="/">hdm.lt</Link>
 			</h1>
 			{loggedIn ? <Navigation /> : <SignInButton />}
 		</header>

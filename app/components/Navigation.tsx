@@ -7,7 +7,10 @@ export default function Navigation() {
 			<ul className="flex justify-between items-center gap-4">
 				<li>
 					<button>
-						<Link href="/my-links" className="hover:border-b-2">
+						<Link
+							href="/my-links"
+							className="hover:border-b border-current"
+						>
 							My Links
 						</Link>
 					</button>
