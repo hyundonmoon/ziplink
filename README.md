@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# hdm.lt
 
-## Getting Started
+hdm.lt is a URL shortener built with Next.js, TailwindCSS, and TypeScript.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   **Instant URL shortening**: Generate shortened links quickly and easily.
+-   **Seamless UI/UX**: Designed with TailwindCSS for a clean and responsive experience.
+-   **Type-safe**: Developed with TypeScript and Zod for robust and maintainable code.
+-   **User authentication**: Users can sign up and log in to manage their shortened URLs.
+-   **Custom slugs**: Users can specify their own slugs for URLs. (WIP)
+-   **Analytics**: Track the number of clicks on each shortened URL (WIP).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Before running this project, ensure you have the following set up:
 
-## Learn More
+1. **PostgreSQL Database**
 
-To learn more about Next.js, take a look at the following resources:
+    - Set up a PostgreSQL instance either locally or through a cloud provider like [Vercel](https://vercel.com/integrations/postgresql).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **GitHub OAuth App**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    - Create an OAuth app in [GitHub Developer Settings](https://github.com/settings/developers).
+    - Save the **Client ID** and **Client Secret** for your environment variables.
 
-## Deploy on Vercel
+3. **Cloudflare Turnstile**
+    - Get a **Turnstile site key and secret** from [Cloudflare Turnstile](https://dash.cloudflare.com/turnstile).
+    - Save these keys for your environment variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To run this project locally:
+
+1. **Clone the repository**:
+
+    ```bash
+    git clone https://github.com/hyundonmoon/hdm.lt.git
+    cd hdm.lt
+    ```
+
+2. **Install dependencies**:
+
+    ```bash
+    pnpm install
+    ```
+
+3. **Set up environment variables**:  
+   Check the `.env.example` file in the repository for the required variables. Create a `.env.local` file and configure the values accordingly.
+
+4. **Run the development server**:
+
+    ```bash
+    pnpm run dev
+    ```
+
+5. **Open in your browser**:  
+   Navigate to `http://localhost:3000` to view the app.
+
+## Contributing
+
+Contributions are welcome! If you'd like to improve the project, follow these steps:
+
+1. Fork the repository
+2. Create a new branch:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+3. Commit your changes:
+    ```bash
+    git commit -m "Add your feature description"
+    ```
+4. Push your branch:
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+5. Open a pull request
+
+## 📝 License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
