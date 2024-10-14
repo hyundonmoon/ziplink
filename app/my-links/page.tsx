@@ -17,7 +17,7 @@ export default async function MyLinksPage() {
 					<MyLinks />
 				</Suspense>
 			) : (
-				<div>
+				<div className="text-center py-16">
 					<p>Sign in to view your links</p>
 				</div>
 			)}
