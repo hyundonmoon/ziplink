@@ -1,7 +1,8 @@
+import Footer from '@/app/components/Footer';
+import Header from '@/app/components/Header';
+import '@/app/globals.css';
 import type { Metadata } from 'next';
 import { Literata } from 'next/font/google';
-import Header from './components/Header';
-import './globals.css';
 
 const literata = Literata({
 	subsets: ['latin'],
@@ -25,7 +26,8 @@ export default function RootLayout({
 				className={`${literata.variable} antialiased p-6 h-screen w-screen max-w-screen-lg mx-auto font-serif flex flex-col`}
 			>
 				<Header />
-				<main className="flex-1">{children}</main>
+				<main className="flex-1 py-8">{children}</main>
+				<Footer />
 			</body>
 		</html>
 	);
