@@ -10,8 +10,8 @@ const literata = Literata({
 });
 
 export const metadata: Metadata = {
-	title: 'URL Shortener',
-	description: 'Shorten your URLs with ease',
+	title: 'hdm.lt - Shorten your URLs with ease.',
+	description: 'Shorten your URLs with ease.',
 };
 
 export default function RootLayout({

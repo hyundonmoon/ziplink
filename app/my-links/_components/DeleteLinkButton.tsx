@@ -5,7 +5,7 @@ import { deleteUserLink } from '@/app/lib/actions';
 export default function DeleteLinkButton({ id }: { id: number }) {
 	return (
 		<button
-			className="px-3 py-1 border rounded bg-rose-600 text-white"
+			className="px-2 py-1 border rounded hover:border-sky-400"
 			onClick={() => {
 				deleteUserLink(id);
 			}}

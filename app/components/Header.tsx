@@ -8,7 +8,7 @@ export default async function Header() {
 	const loggedIn = !!session?.userId;
 
 	return (
-		<header className="flex justify-between items-center">
+		<header className="flex justify-between items-center py-8">
 			<h1 className="text-2xl font-bold">
 				<Link href="/">hdm.lt</Link>
 			</h1>

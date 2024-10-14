@@ -77,6 +77,7 @@ export async function createShortUrl(
 			},
 		});
 
+		revalidatePath('/my-links');
 		return {
 			status: ACTION_SUCCESS,
 			data: {

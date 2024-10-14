@@ -6,9 +6,9 @@ export default async function MyLinks() {
 
 	if (!links || links.length === 0) {
 		return (
-			<p>
-				You haven&#39;t shortend any links.{' '}
-				<a href="/" className="hover:border-b">
+			<p className="text-center py-16">
+				You haven&#39;t shortened any links.{' '}
+				<a href="/" className="hover:border-b border-current">
 					Create one
 				</a>
 				?

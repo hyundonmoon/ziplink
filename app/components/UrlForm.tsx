@@ -50,6 +50,7 @@ export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
 							name="url"
 							placeholder="Enter your URL"
 							autoComplete="off"
+							spellCheck="false"
 							className={`
                         w-full p-2 mt-1 rounded-md border outline-none focus:ring focus:border-blue-500 focus:outline-none
                         ${isUrlInvalid ? 'border-rose-500' : null}`}
