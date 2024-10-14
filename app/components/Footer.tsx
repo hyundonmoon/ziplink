@@ -6,7 +6,7 @@ export default function Footer() {
 				href="https://github.com/hyundonmoon/hdm.lt"
 				target="_blank"
 				rel="noopener noreferrer"
-				className="hover:border-b border-current"
+				className="border-b border-transparent hover:border-current"
 			>
 				GitHub
 			</a>
