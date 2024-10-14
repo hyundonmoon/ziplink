@@ -13,10 +13,6 @@ export default function Home() {
 	return (
 		<div className="w-full h-full flex flex-col justify-center items-center">
 			<div className="w-full max-w-lg">
-				<h2 className="text-xl font-bold mb-3 md:mb-6 md:text-3xl">
-					Shorten your URLs with ease
-				</h2>
-
 				<UrlShortener key={key} handleReset={handleReset} />
 			</div>
 		</div>

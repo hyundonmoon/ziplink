@@ -14,55 +14,66 @@ export default function ShortUrlResult({
 	const shortUrl = `${window.location.host}/${shortCode}`;
 
 	return (
-		<div className="p-4 bg-slate-50 rounded-md">
-			<div className="flex flex-col">
-				<label className="mb-4">
-					<span className="text-sm mb-1 block">Original url</span>
-					<input
-						type="text"
-						readOnly
-						value={originalUrl}
-						className="w-full p-2 rounded-md border outline-none"
-					></input>
-				</label>
+		<>
+			<h2 className="text-xl font-bold mb-3 md:mb-6 md:text-3xl">
+				Here you go! &#127881;
+			</h2>
+			<div className="p-4 border rounded-lg overflow-hidden">
+				<div className="flex flex-col space-y-4">
+					<div>
+						<label className="mb-1 inline-block">
+							Original url
+						</label>
 
-				<label className="mb-4">
-					<span className="text-sm mb-1 block">Shortened url</span>
-					<input
-						type="text"
-						readOnly
-						value={shortUrl}
-						className="w-full p-2 rounded-md border outline-none"
-					></input>
-				</label>
+						<input
+							type="text"
+							readOnly
+							value={originalUrl}
+							className="w-full p-2 rounded-md border outline-none"
+						></input>
+					</div>
 
-				<div className="space-x-2">
-					<button>
-						<a
-							className="inline-block border py-1 px-3 rounded-md"
-							href={`/${shortCode}`}
-							target="_blank"
-							rel="noreferrer noopener"
+					<div>
+						<label className="mb-1 inline-block">
+							Shortened url
+						</label>
+
+						<input
+							type="text"
+							readOnly
+							value={shortUrl}
+							className="w-full p-2 rounded-md border outline-none"
+						></input>
+					</div>
+
+					<div className="space-x-2">
+						<button>
+							<a
+								className="inline-block border py-1 px-3 rounded-md"
+								href={`/${shortCode}`}
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								Visit
+							</a>
+						</button>
+
+						<button
+							className="border py-1 px-3 rounded-md"
+							onClick={() => handleCopy(shortUrl)}
 						>
-							Visit
-						</a>
-					</button>
+							Copy
+						</button>
 
-					<button
-						className="border py-1 px-3 rounded-md"
-						onClick={() => handleCopy(shortUrl)}
-					>
-						Copy
-					</button>
-
-					<button
-						className="border py-1 px-3 rounded-md"
-						onClick={handleReset}
-					>
-						Shorten another
-					</button>
+						<button
+							className="border py-1 px-3 rounded-md"
+							onClick={handleReset}
+						>
+							Shorten another
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
