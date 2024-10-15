@@ -13,6 +13,7 @@ import { UrlShortenActionResult } from '@/app/lib/models';
 import prisma from '@/app/lib/prisma';
 import { checkToken, normalizeUrl } from '@/app/lib/utils';
 import { auth, signIn as authSignIn, signOut as authSignOut } from '@/auth';
+import { Prisma } from '@prisma/client';
 import { customAlphabet } from 'nanoid';
 import { revalidatePath } from 'next/cache';
 import { notFound, permanentRedirect, redirect } from 'next/navigation';
@@ -65,17 +66,23 @@ export async function createShortUrl(
 
 	try {
 		const normalizedUrl = normalizeUrl(parseResult.data.url.trim());
-		const result = await prisma.shortUrl.create({
+
+		const shortUrlArgs: Prisma.ShortUrlCreateArgs = {
 			data: {
 				originalUrl: normalizedUrl.href,
 				shortCode: nanoid(6),
-				User: {
-					connect: {
-						id: session?.userId,
-					},
-				},
 			},
-		});
+		};
+
+		if (session?.userId) {
+			shortUrlArgs.data.User = {
+				connect: {
+					id: session.userId,
+				},
+			};
+		}
+
+		const result = await prisma.shortUrl.create(shortUrlArgs);
 
 		revalidatePath('/my-links');
 		return {
