@@ -1,5 +1,5 @@
-import MyLinks from '@/app/my-links/_components/MyLinks';
-import MyLinksSkeleton from '@/app/my-links/_components/MyLinksSkeleton';
+import MyLinks from '@/app/(main)/my-links/_components/MyLinks';
+import MyLinksSkeleton from '@/app/(main)/my-links/_components/MyLinksSkeleton';
 import { auth } from '@/auth';
 import { Suspense } from 'react';
 

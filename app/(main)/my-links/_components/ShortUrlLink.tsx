@@ -1,7 +1,7 @@
+import CopyLinkButton from '@/app/(main)/my-links/_components/CopyLinkButton';
+import DeleteLinkButton from '@/app/(main)/my-links/_components/DeleteLinkButton';
+import VisitLinkButton from '@/app/(main)/my-links/_components/VisitLinkButton';
 import { ShortLink } from '@/app/lib/models';
-import CopyLinkButton from '@/app/my-links/_components/CopyLinkButton';
-import DeleteLinkButton from '@/app/my-links/_components/DeleteLinkButton';
-import VisitLinkButton from '@/app/my-links/_components/VisitLinkButton';
 
 export default function ShortUrlLink({
 	link: { id, shortCode, originalUrl },

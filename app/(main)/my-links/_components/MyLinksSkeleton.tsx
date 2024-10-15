@@ -1,4 +1,4 @@
-import ShortUrlLinkSkeleton from '@/app/my-links/_components/ShortUrlLinkSkeleton';
+import ShortUrlLinkSkeleton from '@/app/(main)/my-links/_components/ShortUrlLinkSkeleton';
 
 export default function MyLinksSkeleton() {
 	return (

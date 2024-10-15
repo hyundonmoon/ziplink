@@ -1,10 +1,10 @@
 'use client';
 
+import ShortUrlResult from '@/app/(main)/components/ShortUrlResult';
+import UrlForm from '@/app/(main)/components/UrlForm';
+import { createShortUrl } from '@/app/lib/actions';
+import { ACTION_SUCCESS } from '@/app/lib/constants';
 import { useFormState } from 'react-dom';
-import { createShortUrl } from '../lib/actions';
-import { ACTION_SUCCESS } from '../lib/constants';
-import ShortUrlResult from './ShortUrlResult';
-import UrlForm from './UrlForm';
 
 interface UrlShortenerProps {
 	handleReset: () => void;

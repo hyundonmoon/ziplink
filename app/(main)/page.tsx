@@ -1,7 +1,7 @@
 'use client';
 
+import UrlShortener from '@/app/(main)/components/UrlShortener';
 import { useState } from 'react';
-import UrlShortener from './components/UrlShortener';
 
 export default function Home() {
 	const [key, setKey] = useState(0);

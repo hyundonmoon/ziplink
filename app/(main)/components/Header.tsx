@@ -1,5 +1,5 @@
-import Navigation from '@/app/components/Navigation';
-import SignInButton from '@/app/components/SignInButton';
+import Navigation from '@/app/(main)/components/Navigation';
+import SignInButton from '@/app/(main)/components/SignInButton';
 import { auth } from '@/auth';
 import Link from 'next/link';
 

@@ -1,5 +1,5 @@
-import Footer from '@/app/components/Footer';
-import Header from '@/app/components/Header';
+import Footer from '@/app/(main)/components/Footer';
+import Header from '@/app/(main)/components/Header';
 import '@/app/globals.css';
 import type { Metadata } from 'next';
 import { Literata } from 'next/font/google';

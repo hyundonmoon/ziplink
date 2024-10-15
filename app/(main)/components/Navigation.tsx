@@ -1,4 +1,4 @@
-import SignOutButton from '@/app/components/SignOutButton';
+import SignOutButton from '@/app/(main)/components/SignOutButton';
 import Link from 'next/link';
 
 export default function Navigation() {

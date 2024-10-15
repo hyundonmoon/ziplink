@@ -1,5 +1,5 @@
+import ShortUrlLink from '@/app/(main)/my-links/_components/ShortUrlLink';
 import { getUserLinks as getUserLinksServerAction } from '@/app/lib/actions';
-import ShortUrlLink from '@/app/my-links/_components/ShortUrlLink';
 
 export default async function MyLinks() {
 	const links = await getUserLinksServerAction();
