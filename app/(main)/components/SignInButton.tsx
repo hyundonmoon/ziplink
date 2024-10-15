@@ -1,11 +1,9 @@
-import { signIn } from '../../lib/actions';
+import Link from 'next/link';
 
 export default function SignInButton() {
 	return (
-		<form action={signIn}>
-			<button type="submit" className="hover:border-b border-current">
-				Sign In
-			</button>
-		</form>
+		<Link href="/auth/signin" className="hover:border-b border-current">
+			Sign In
+		</Link>
 	);
 }
