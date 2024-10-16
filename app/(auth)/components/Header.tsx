@@ -8,6 +8,7 @@ export default function Header() {
 	return (
 		<header>
 			<button
+				className="hover:border-b border-current"
 				onClick={() => {
 					router.back();
 				}}

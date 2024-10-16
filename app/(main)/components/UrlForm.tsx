@@ -31,7 +31,7 @@ export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
 
 	return (
 		<>
-			<h2 className="text-xl font-bold mb-3 md:mb-6 md:text-3xl">
+			<h2 className="text-xl font-bold mb-3 sm:mb-6 sm:text-3xl">
 				Shorten your URLs with ease
 			</h2>
 			<form
