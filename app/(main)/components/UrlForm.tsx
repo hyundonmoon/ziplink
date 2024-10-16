@@ -69,6 +69,7 @@ export default function UrlForm({ formAction, formActionState }: UrlFormProps) {
 						siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
 						options={{
 							size: 'flexible',
+							theme: 'light',
 						}}
 						onError={() => setTurnstileStatus('error')}
 						onExpire={() => setTurnstileStatus('expired')}
