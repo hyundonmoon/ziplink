@@ -10,7 +10,7 @@ export default async function Header() {
 	return (
 		<header className="flex justify-between items-center py-8">
 			<h1 className="text-2xl font-bold">
-				<Link href="/">hdm.lt</Link>
+				<Link href="/">ziplink</Link>
 			</h1>
 			{loggedIn ? <Navigation /> : <SignInButton />}
 		</header>
