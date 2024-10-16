@@ -1,6 +1,6 @@
-# hdm.lt
+# ziplink
 
-hdm.lt is a URL shortener built with Next.js, TailwindCSS, and TypeScript.
+ziplink is a URL shortener built with Next.js, TailwindCSS, and TypeScript.
 
 ## Features
 
@@ -37,7 +37,7 @@ To run this project locally:
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/hyundonmoon/hdm.lt.git
+    git clone https://github.com/hyundonmoon/ziplink.git
     cd hdm.lt
     ```
 
