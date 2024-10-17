@@ -11,7 +11,7 @@ const literata = Literata({
 });
 
 export const metadata: Metadata = {
-	title: 'hdm.lt - Shorten your URLs with ease.',
+	title: 'Ziplink - Shorten your URLs with ease.',
 	description: 'Shorten your URLs with ease.',
 };
 
