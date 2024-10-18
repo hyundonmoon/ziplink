@@ -1,32 +1,23 @@
-import SignOutButton from '@/app/(main)/components/SignOutButton';
-import Link from 'next/link';
+'use client';
+
+import HamburgerMenuIcon from '@/app/(main)/components/HamburgerMenuIcon';
+import NavPopUp from '@/app/(main)/components/NavPopUp';
+import { useState } from 'react';
 
 export default function Navigation() {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 	return (
-		<nav>
-			<ul className="flex justify-between items-center gap-4">
-				<li>
-					<Link
-						href="/my-links"
-						className="hover:border-b border-current"
-					>
-						My Links
-					</Link>
-				</li>
+		<div className="relative">
+			<button
+				onClick={() => {
+					setIsMenuOpen(true);
+				}}
+			>
+				<HamburgerMenuIcon />
+			</button>
 
-				<li>
-					<Link
-						href="/settings"
-						className="hover:border-b border-current"
-					>
-						Settings
-					</Link>
-				</li>
-
-				<li>
-					<SignOutButton />
-				</li>
-			</ul>
-		</nav>
+			{isMenuOpen && <NavPopUp setIsMenuOpen={setIsMenuOpen} />}
+		</div>
 	);
 }
