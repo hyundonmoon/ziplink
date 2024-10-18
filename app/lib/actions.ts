@@ -38,7 +38,7 @@ const urlSchema = z.object({
 const nanoid = customAlphabet(NANO_ID_ALPHABET, 10);
 
 export async function createShortUrl(
-	_prevState: unknown,
+	_prevState: UrlShortenActionResult | null,
 	formData: FormData
 ): Promise<UrlShortenActionResult> {
 	const session = await auth();
