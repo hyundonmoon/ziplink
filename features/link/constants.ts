@@ -1,10 +1,15 @@
-export const INVALID_URL = 'invalid url';
-export const UNKNOWN_ERROR = 'unknown';
-export const ACTION_FAILED = 'failed';
-export const ACTION_SUCCESS = 'success';
+export const CLOUDFLARE_TOKEN_CHECK_URL =
+	'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+export const UNKNOWN_ERROR_MESSAGE = 'An unknown error occurred.';
+
+export const INVALID_URL_MESSAGE = 'Please enter a valid URL.';
+
 export const NANO_ID_ALPHABET =
 	'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-';
+
 export const INVALID_TOKEN = 'invalid token';
+
 export const TOKEN_ERROR = 'token error';
 
 export const TOKEN_ERROR_MESSAGES = {
@@ -20,3 +25,11 @@ export const TOKEN_ERROR_MESSAGES = {
 	'internal-error': 'Internal error.',
 	'unknown-error': 'An unknown error occurred. Please try again later.',
 } as const;
+
+export const INVALID_URL = 'invalid url';
+
+export const UNKNOWN_ERROR = 'unknown';
+
+export const ACTION_FAILED = 'failed';
+
+export const ACTION_SUCCESS = 'success';

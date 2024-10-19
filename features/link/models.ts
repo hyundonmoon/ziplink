@@ -2,7 +2,7 @@ import {
 	ACTION_FAILED,
 	ACTION_SUCCESS,
 	TOKEN_ERROR_MESSAGES,
-} from '@/app/lib/constants';
+} from '@/features/link/constants';
 
 export interface ActionSuccess<T> {
 	status: typeof ACTION_SUCCESS;
@@ -34,9 +34,3 @@ export interface TokenCheckFailure {
 }
 
 export type TokenCheckResult = TokenCheckSuccess | TokenCheckFailure;
-
-export interface ShortLink {
-	originalUrl: string;
-	shortCode: string;
-	id: number;
-}

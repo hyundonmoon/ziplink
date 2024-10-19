@@ -12,9 +12,9 @@ export default async function MyLinksPage() {
 
 	return (
 		<div>
-			{session ? (
+			{session?.userId ? (
 				<Suspense fallback={<MyLinksSkeleton />}>
-					<MyLinks />
+					<MyLinks userId={session.userId} />
 				</Suspense>
 			) : (
 				<div className="text-center py-16">

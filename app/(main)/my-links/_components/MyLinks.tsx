@@ -1,9 +1,9 @@
 import ShortUrlLink from '@/app/(main)/my-links/_components/ShortUrlLink';
-import { getUserLinks as getUserLinksServerAction } from '@/app/lib/actions';
+import { getUserLinks } from '@/features/link/actions';
 import Link from 'next/link';
 
-export default async function MyLinks() {
-	const links = await getUserLinksServerAction();
+export default async function MyLinks({ userId }: { userId: string }) {
+	const links = await getUserLinks(userId);
 
 	if (!links || links.length === 0) {
 		return (
@@ -25,7 +25,11 @@ export default async function MyLinks() {
 
 			<ul className="space-y-4">
 				{links.map((link) => (
-					<ShortUrlLink key={link.id.toString()} link={link} />
+					<ShortUrlLink
+						userId={userId}
+						key={link.id.toString()}
+						link={link}
+					/>
 				))}
 			</ul>
 		</>

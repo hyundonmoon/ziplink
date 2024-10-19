@@ -1,8 +1,12 @@
 'use client';
 
 import { ShortenButton } from '@/app/(main)/components/ShortenButton';
-import { ACTION_FAILED, INVALID_URL, TOKEN_ERROR } from '@/app/lib/constants';
-import { UrlShortenActionResult } from '@/app/lib/models';
+import {
+	ACTION_FAILED,
+	INVALID_URL,
+	TOKEN_ERROR,
+} from '@/features/link/constants';
+import { UrlShortenActionResult } from '@/features/link/models';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { ChangeEvent, useState } from 'react';
 
