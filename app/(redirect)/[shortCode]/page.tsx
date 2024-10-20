@@ -1,7 +1,7 @@
 'use client';
 
 import NotFound from '@/app/components/NotFound';
-import { queryShortUrl } from '@/app/lib/actions';
+import { queryShortUrl } from '@/features/redirect/actions';
 import { useEffect, useState } from 'react';
 
 export default function Redirect({
