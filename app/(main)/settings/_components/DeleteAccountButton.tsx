@@ -1,11 +1,19 @@
 'use client';
 
-import { deleteUser } from '@/app/lib/actions';
+import { deleteUser, signOut } from '@/features/auth/actions';
+import { ACTION_SUCCESS } from '@/features/shared/constants';
 
 export default function DeleteAccountButton() {
 	const handleClick = async () => {
 		if (confirm('Are you sure you want to delete your account?')) {
-			deleteUser();
+			const result = await deleteUser();
+
+			if (result.status === ACTION_SUCCESS) {
+				alert('Account deleted. Goodbye!');
+				await signOut();
+			} else {
+				alert(result.message);
+			}
 		}
 	};
 	return (

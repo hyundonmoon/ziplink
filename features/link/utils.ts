@@ -1,12 +1,11 @@
 import {
-	ACTION_FAILED,
-	ACTION_SUCCESS,
 	CLOUDFLARE_TOKEN_CHECK_URL,
 	INVALID_URL,
 	NANO_ID_ALPHABET,
 	TOKEN_ERROR_MESSAGES,
 } from '@/features/link/constants';
 import { TokenCheckResult } from '@/features/link/models';
+import { ACTION_FAILED, ACTION_SUCCESS } from '@/features/shared/constants';
 import { Prisma } from '@prisma/client';
 import { customAlphabet } from 'nanoid';
 import { URL } from 'url';

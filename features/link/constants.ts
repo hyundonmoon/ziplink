@@ -1,8 +1,6 @@
 export const CLOUDFLARE_TOKEN_CHECK_URL =
 	'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-export const UNKNOWN_ERROR_MESSAGE = 'An unknown error occurred.';
-
 export const INVALID_URL_MESSAGE = 'Please enter a valid URL.';
 
 export const NANO_ID_ALPHABET =
@@ -27,9 +25,3 @@ export const TOKEN_ERROR_MESSAGES = {
 } as const;
 
 export const INVALID_URL = 'invalid url';
-
-export const UNKNOWN_ERROR = 'unknown';
-
-export const ACTION_FAILED = 'failed';
-
-export const ACTION_SUCCESS = 'success';

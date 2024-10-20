@@ -3,14 +3,10 @@
 import prisma from '@/app/lib/prisma';
 import { auth } from '@/auth';
 import {
-	ACTION_FAILED,
-	ACTION_SUCCESS,
 	INVALID_URL,
 	INVALID_URL_MESSAGE,
 	TOKEN_ERROR,
 	TOKEN_ERROR_MESSAGES,
-	UNKNOWN_ERROR,
-	UNKNOWN_ERROR_MESSAGE,
 } from '@/features/link/constants';
 import { UrlShortenActionResult } from '@/features/link/models';
 import {
@@ -19,6 +15,12 @@ import {
 	normalizeUrl,
 	parseUrl,
 } from '@/features/link/utils';
+import {
+	ACTION_FAILED,
+	ACTION_SUCCESS,
+	UNKNOWN_ERROR,
+	UNKNOWN_ERROR_MESSAGE,
+} from '@/features/shared/constants';
 import { revalidatePath } from 'next/cache';
 
 export async function shortenUrl(

@@ -3,8 +3,8 @@
 import ShortUrlResult from '@/app/(main)/components/ShortUrlResult';
 import UrlForm from '@/app/(main)/components/UrlForm';
 import { shortenUrl } from '@/features/link/actions';
-import { ACTION_SUCCESS } from '@/features/link/constants';
 import { UrlShortenActionResult } from '@/features/link/models';
+import { ACTION_SUCCESS } from '@/features/shared/constants';
 import { useFormState } from 'react-dom';
 
 interface UrlShortenerProps {
