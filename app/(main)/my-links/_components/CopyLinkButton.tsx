@@ -1,6 +1,6 @@
 'use client';
 
-import { handleCopy } from '@/app/lib/utils';
+import { handleCopy } from '@/features/shared/utils';
 
 export default function CopyLinkButton({ shortUrl }: { shortUrl: string }) {
 	return (

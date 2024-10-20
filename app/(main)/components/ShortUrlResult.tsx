@@ -1,4 +1,4 @@
-import { handleCopy } from '@/app/lib/utils';
+import { handleCopy } from '@/features/shared/utils';
 
 interface ShortUrlResultProps {
 	originalUrl: string;
