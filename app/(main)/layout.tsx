@@ -23,7 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${literata.variable} antialiased p-6 h-screen w-screen max-w-screen-md min-w-fit mx-auto font-serif flex flex-col`}
+				className={`${literata.variable} antialiased p-6 h-screen w-screen max-w-screen-md mx-auto font-serif flex flex-col`}
 			>
 				<Header />
 				<main className="flex-1 py-8">{children}</main>
