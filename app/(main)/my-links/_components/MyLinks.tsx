@@ -23,7 +23,7 @@ export default async function MyLinks({ userId }: { userId: string }) {
 				Your links
 			</h1>
 
-			<ul className="space-y-4">
+			<ul className="space-y-4 break-words">
 				{links.map((link) => (
 					<ShortUrlLink
 						userId={userId}
