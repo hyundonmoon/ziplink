@@ -1,6 +1,6 @@
 import Header from '@/app/(auth)/components/Header';
 import '@/app/globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Literata } from 'next/font/google';
 
 const literata = Literata({
@@ -9,9 +9,17 @@ const literata = Literata({
 	variable: '--font-literata',
 });
 
+export const viewport: Viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	maximumScale: 1,
+	userScalable: false,
+};
+
 export const metadata: Metadata = {
 	title: 'Sign in | Ziplink',
 	description: 'Shorten your URLs with ease.',
+	icons: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>",
 };
 
 export default function RootLayout({
