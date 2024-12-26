@@ -50,7 +50,7 @@ export default function ShortUrlResult({
 					<div className="space-x-2">
 						<button>
 							<a
-								className="inline-block border py-1 px-3 rounded-md"
+								className="inline-block border py-1 px-3 rounded-md hover:bg-gray-50"
 								href={`/${shortCode}`}
 								target="_blank"
 								rel="noreferrer noopener"
@@ -60,14 +60,14 @@ export default function ShortUrlResult({
 						</button>
 
 						<button
-							className="border py-1 px-3 rounded-md"
+							className="border py-1 px-3 rounded-md hover:bg-gray-50"
 							onClick={() => copy(shortUrl)}
 						>
 							{copied ? 'Copied!' : 'Copy'}
 						</button>
 
 						<button
-							className="border py-1 px-3 rounded-md"
+							className="border py-1 px-3 rounded-md hover:bg-gray-50"
 							onClick={handleReset}
 						>
 							Shorten another
