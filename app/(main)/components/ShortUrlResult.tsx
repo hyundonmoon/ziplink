@@ -1,4 +1,4 @@
-import { handleCopy } from '@/features/shared/utils';
+import useClipboard from '@/features/shared/hooks/useClipboard';
 
 interface ShortUrlResultProps {
 	originalUrl: string;
@@ -11,6 +11,7 @@ export default function ShortUrlResult({
 	shortCode,
 	handleReset,
 }: ShortUrlResultProps) {
+	const [copied, copy] = useClipboard();
 	const shortUrl = `${window.location.host}/${shortCode}`;
 
 	return (
@@ -60,9 +61,9 @@ export default function ShortUrlResult({
 
 						<button
 							className="border py-1 px-3 rounded-md"
-							onClick={() => handleCopy(shortUrl)}
+							onClick={() => copy(shortUrl)}
 						>
-							Copy
+							{copied ? 'Copied!' : 'Copy'}
 						</button>
 
 						<button
