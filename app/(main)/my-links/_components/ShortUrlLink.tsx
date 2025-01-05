@@ -1,16 +1,18 @@
+'use client';
+
 import CopyLinkButton from '@/app/(main)/my-links/_components/CopyLinkButton';
 import DeleteLinkButton from '@/app/(main)/my-links/_components/DeleteLinkButton';
-import { LinkResponse } from '@/app/(main)/my-links/_components/MyLinks';
 import VisitLinkButton from '@/app/(main)/my-links/_components/VisitLinkButton';
+import { LinkResponse } from '@/features/link/models';
 
-export default async function ShortUrlLink({
+export default function ShortUrlLink({
 	userId,
 	link: { id, shortCode, originalUrl },
 }: {
 	userId: string;
 	link: LinkResponse;
 }) {
-	const shortUrl = `${process.env.HOSTNAME}/${shortCode}`;
+	const shortUrl = `${process.env.NEXT_PUBLIC_HOSTNAME}/${shortCode}`;
 
 	return (
 		<li className="border p-4 ">

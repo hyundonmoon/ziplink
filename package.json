@@ -14,6 +14,7 @@
 		"@neondatabase/serverless": "^0.10.1",
 		"@prisma/adapter-neon": "^5.20.0",
 		"@prisma/client": "^5.20.0",
+		"@tanstack/react-query": "^5.62.15",
 		"nanoid": "^5.0.7",
 		"next": "14.2.14",
 		"next-auth": "5.0.0-beta.22",
@@ -22,6 +23,7 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@tanstack/eslint-plugin-query": "^5.62.15",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",

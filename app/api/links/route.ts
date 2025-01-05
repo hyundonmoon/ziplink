@@ -1,8 +1,7 @@
-import { auth } from '@/auth';
 import { getUserLinks } from '@/features/link/actions';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const GET = auth(async (request) => {
+export const GET = async (request: NextRequest) => {
 	const searchParams = request.nextUrl.searchParams;
 	const userId = searchParams.get('userId');
 	if (!userId) {
@@ -11,4 +10,4 @@ export const GET = auth(async (request) => {
 
 	const links = await getUserLinks(userId);
 	return NextResponse.json(links);
-});
+};

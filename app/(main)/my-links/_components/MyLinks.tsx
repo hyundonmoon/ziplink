@@ -1,22 +1,15 @@
+'use client';
+
 import ShortUrlLink from '@/app/(main)/my-links/_components/ShortUrlLink';
+import { getLinks } from '@/features/link/utils';
+import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import { z } from 'zod';
 
-const LinkResponse = z.object({
-	id: z.number(),
-	originalUrl: z.string(),
-	shortCode: z.string(),
-});
-export type LinkResponse = z.infer<typeof LinkResponse>;
-const LinkResponseData = z.array(LinkResponse);
-
-export default async function MyLinks({ userId }: { userId: string }) {
-	const response = await fetch(
-		`${process.env.API_URL!}/links?userId=${userId}`
-	);
-	const data = await response.json();
-	const links = LinkResponseData.parse(data);
-	// TODO: study zod error handling
+export default function MyLinks({ userId }: { userId: string }) {
+	const { data: links } = useQuery({
+		queryKey: ['links', userId],
+		queryFn: async () => getLinks(userId),
+	});
 
 	if (!links || links.length === 0) {
 		return (

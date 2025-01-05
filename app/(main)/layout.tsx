@@ -1,6 +1,7 @@
 import Footer from '@/app/(main)/components/Footer';
 import Header from '@/app/(main)/components/Header';
 import '@/app/globals.css';
+import QueryProvider from '@/features/shared/providers/query-provider';
 import type { Metadata, Viewport } from 'next';
 import { Literata } from 'next/font/google';
 
@@ -33,9 +34,11 @@ export default function RootLayout({
 			<body
 				className={`${literata.variable} antialiased p-6 h-screen w-screen max-w-screen-md mx-auto font-serif flex flex-col`}
 			>
-				<Header />
-				<main className="flex-1 py-8">{children}</main>
-				<Footer />
+				<QueryProvider>
+					<Header />
+					<main className="flex-1 py-8">{children}</main>
+					<Footer />
+				</QueryProvider>
 			</body>
 		</html>
 	);

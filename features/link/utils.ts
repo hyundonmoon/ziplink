@@ -1,12 +1,14 @@
+import { getUserLinks } from '@/features/link/actions';
 import {
 	CLOUDFLARE_TOKEN_CHECK_URL,
 	INVALID_URL,
 	NANO_ID_ALPHABET,
 	TOKEN_ERROR_MESSAGES,
 } from '@/features/link/constants';
-import { TokenCheckResult } from '@/features/link/models';
+import { LinkResponseData, TokenCheckResult } from '@/features/link/models';
 import { ACTION_FAILED, ACTION_SUCCESS } from '@/features/shared/constants';
 import { Prisma } from '@prisma/client';
+import { isServer } from '@tanstack/react-query';
 import { customAlphabet } from 'nanoid';
 import { URL } from 'url';
 import { z } from 'zod';
@@ -94,4 +96,15 @@ export const checkCloudflareToken = async (
 			reason: 'unknown-error',
 		} as const;
 	}
+};
+
+export const getLinks = async (userId: string) => {
+	if (isServer) {
+		const links = await getUserLinks(userId);
+		return links;
+	}
+
+	const response = await fetch(`/api/links?userId=${userId}`);
+	const data = await response.json();
+	return LinkResponseData.parse(data);
 };
