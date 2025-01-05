@@ -1,14 +1,14 @@
 import CopyLinkButton from '@/app/(main)/my-links/_components/CopyLinkButton';
 import DeleteLinkButton from '@/app/(main)/my-links/_components/DeleteLinkButton';
+import { LinkResponse } from '@/app/(main)/my-links/_components/MyLinks';
 import VisitLinkButton from '@/app/(main)/my-links/_components/VisitLinkButton';
-import { ShortUrl } from '@prisma/client';
 
 export default async function ShortUrlLink({
 	userId,
 	link: { id, shortCode, originalUrl },
 }: {
 	userId: string;
-	link: Pick<ShortUrl, 'id' | 'shortCode' | 'originalUrl'>;
+	link: LinkResponse;
 }) {
 	const shortUrl = `${process.env.HOSTNAME}/${shortCode}`;
 

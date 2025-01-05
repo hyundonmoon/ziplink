@@ -1,9 +1,22 @@
 import ShortUrlLink from '@/app/(main)/my-links/_components/ShortUrlLink';
-import { getUserLinks } from '@/features/link/actions';
 import Link from 'next/link';
+import { z } from 'zod';
+
+const LinkResponse = z.object({
+	id: z.number(),
+	originalUrl: z.string(),
+	shortCode: z.string(),
+});
+export type LinkResponse = z.infer<typeof LinkResponse>;
+const LinkResponseData = z.array(LinkResponse);
 
 export default async function MyLinks({ userId }: { userId: string }) {
-	const links = await getUserLinks(userId);
+	const response = await fetch(
+		`${process.env.API_URL!}/links?userId=${userId}`
+	);
+	const data = await response.json();
+	const links = LinkResponseData.parse(data);
+	// TODO: study zod error handling
 
 	if (!links || links.length === 0) {
 		return (
